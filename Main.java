@@ -1,5 +1,5 @@
 import Creature.Reptile;
-import Exceptions.ReproductionWithItselfException;
+import Exceptions.CreatureExceptions.ReproductionExceptions.ReproductionWithItselfException;
 import enums.MasterSkillEnum;
 
 public class Main {
