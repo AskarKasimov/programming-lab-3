@@ -23,6 +23,10 @@ public abstract class Creature {
         if (!elder.isCanCreateCreatures())
             throw new ElderCantCreateCreaturesException("Elder " + elder.getName() + " can't create creatures anymore");
         this.owner = elder;
+        try {
+            elder.slaveCreature(this);
+        } catch (CantChangeOwnerException _) {
+        }
         this.name = name;
         this.requiredMasterSkill = requiredMasterSkill;
         this.intelligence = intelligence;
@@ -37,7 +41,7 @@ public abstract class Creature {
     }
 
     public void setOwner(Elder owner) throws CantChangeOwnerException {
-        if (owner.getMasterSkillLevel().ordinal() < this.owner.getMasterSkillLevel().ordinal())
+        if (this.owner != null && owner.getMasterSkillLevel().ordinal() < this.owner.getMasterSkillLevel().ordinal())
             throw new CantChangeOwnerException("Current owner has more skill than new one, it can't be changed!");
         else this.owner = owner;
     }

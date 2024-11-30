@@ -30,6 +30,6 @@ public class Continent implements Habitat {
 
     @Override
     public String toString() {
-        return "Континент: " + this.name;
+        return "Континент " + this.name;
     }
 }

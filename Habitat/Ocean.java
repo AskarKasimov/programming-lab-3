@@ -36,6 +36,6 @@ public class Ocean implements Habitat {
 
     @Override
     public String toString() {
-        return "Океан: " + this.name;
+        return "Океан " + this.name;
     }
 }

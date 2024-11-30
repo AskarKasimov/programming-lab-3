@@ -1,15 +1,14 @@
-import Creature.Reptile;
-import Exceptions.CreatureExceptions.ReproductionExceptions.ReproductionWithItselfException;
+import Elder.*;
+import Creature.*;
+import Habitat.*;
+import Exceptions.CreatureExceptions.*;
+import Exceptions.ElderExceptions.*;
+import Exceptions.ElderExceptions.*;
+import Exceptions.HabitatExceptions.*;
 import enums.MasterSkillEnum;
 
 public class Main {
     public static void main(String[] args) {
-        Reptile reptile = new Reptile("mark", MasterSkillEnum.MASTER, 0.5f, 0.5f);
-        try {
-            Reptile newReptile = reptile.makeChildWithPartner(new Reptile("eva", MasterSkillEnum.MASTER, 0.5f, 0.5f));
-            System.out.println(newReptile);
-        } catch (ReproductionWithItselfException e) {
-            throw new RuntimeException(e);
-        }
+
     }
 }

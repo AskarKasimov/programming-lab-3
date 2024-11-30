@@ -15,12 +15,16 @@ public class Elder {
     private Habitat habitat;
     private boolean canCreateCreatures;
 
-    public Elder(String name, Habitat habitat, MasterSkillEnum masterSkillLevel) {
+    public Elder(String name, Habitat habitat, MasterSkillEnum masterSkillLevel) throws NoShogothsForOceanException {
         this.name = name;
-        this.habitat = habitat;
         this.masterSkillLevel = masterSkillLevel;
         this.canCreateCreatures = true;
         this.creatures = new ArrayList<>();
+        if (habitat.canMigrateElder(this)) {
+            this.habitat = habitat;
+        } else {
+            throw new NoShogothsForOceanException("Can't migrate " + this.name + " to " + habitat.getName() + ", because he doesn't have any shogoths");
+        }
     }
 
     public void slaveCreature(Creature creature) throws CantChangeOwnerException {
@@ -47,7 +51,7 @@ public class Elder {
     public String toString() {
         StringBuilder creatures = new StringBuilder();
         for (Creature creature : this.creatures) {
-            creatures.append("\t- ").append(creature.getName()).append("\n");
+            creatures.append("\t- ").append(creature).append("\n");
         }
         return "Старец: " + this.name +
                 ", уровень мастерства: " + this.masterSkillLevel +

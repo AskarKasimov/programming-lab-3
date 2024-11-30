@@ -7,14 +7,12 @@ import Exceptions.ElderExceptions.EldersSkillLevelNotEnoughException;
 import Exceptions.CreatureExceptions.RejectingToWorkException;
 import enums.MasterSkillEnum;
 
-import java.util.ArrayList;
-
 public class Shogoth extends Creature implements DivisionReproduction<Shogoth> {
-    public Shogoth(Elder elder, String name, MasterSkillEnum requiredMasterSkill, float intelligence, float size, ArrayList<Organ> organs) throws EldersSkillLevelNotEnoughException, ElderCantCreateCreaturesException {
+    public Shogoth(Elder elder, String name, MasterSkillEnum requiredMasterSkill, float intelligence, float size) throws EldersSkillLevelNotEnoughException, ElderCantCreateCreaturesException {
         super(elder, name, requiredMasterSkill, intelligence, size);
     }
 
-    public Shogoth(String name, MasterSkillEnum requiredMasterSkill, float intelligence, float size, ArrayList<Organ> organs) {
+    public Shogoth(String name, MasterSkillEnum requiredMasterSkill, float intelligence, float size) {
         super(name, requiredMasterSkill, intelligence, size);
     }
 
@@ -38,6 +36,6 @@ public class Shogoth extends Creature implements DivisionReproduction<Shogoth> {
 
     @Override
     public Shogoth makeChild() {
-        return new Shogoth(this.name + "2", this.requiredMasterSkill, this.intelligence, this.size, this.organs);
+        return new Shogoth(this.name + "2", this.requiredMasterSkill, this.intelligence, this.size);
     }
 }
