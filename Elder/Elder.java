@@ -1,7 +1,8 @@
 package Elder;
 
 import Creature.Creature;
-import Exceptions.CreatureExceptions.CantChangeOwnerException;
+import Exceptions.CreatureExceptions.CreatureCantChangeOwnerException;
+import Exceptions.HabitatExceptions.HabitatException;
 import Exceptions.HabitatExceptions.NoShogothsForOceanException;
 import Habitat.Habitat;
 import enums.MasterSkillEnum;
@@ -15,7 +16,7 @@ public class Elder {
     private Habitat habitat;
     private boolean canCreateCreatures;
 
-    public Elder(String name, Habitat habitat, MasterSkillEnum masterSkillLevel) throws NoShogothsForOceanException {
+    public Elder(String name, Habitat habitat, MasterSkillEnum masterSkillLevel) {
         this.name = name;
         this.masterSkillLevel = masterSkillLevel;
         this.canCreateCreatures = true;
@@ -27,9 +28,11 @@ public class Elder {
         }
     }
 
-    public void slaveCreature(Creature creature) throws CantChangeOwnerException {
-        creature.setOwner(this);
-        this.creatures.add(creature);
+    public void slaveCreature(Creature creature) throws CreatureCantChangeOwnerException {
+        if (!creatures.contains(creature)) {
+            creatures.add(creature);
+            creature.setOwner(this); // Устанавливаем владельца у питомца
+        }
     }
 
     public void improveMasterSkillLevel() {
@@ -40,11 +43,11 @@ public class Elder {
         this.canCreateCreatures = canCreateCreatures;
     }
 
-    public void moveTo(Habitat habitat) throws NoShogothsForOceanException {
+    public void moveTo(Habitat habitat) {
         if (habitat.canMigrateElder(this))
             this.habitat = habitat;
         else
-            throw new NoShogothsForOceanException("Can't migrate " + this.name + " to " + habitat.getName());
+            throw new HabitatException("Can't migrate " + this.name + " to " + habitat.getName());
     }
 
     @Override
@@ -60,12 +63,16 @@ public class Elder {
                 ", существа:\n" + creatures;
     }
 
-    public String getName() {
-        return name;
+    public void removeCreature(Creature creature) {
+        this.creatures.remove(creature);
     }
 
     public ArrayList<Creature> getCreatures() {
         return creatures;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public MasterSkillEnum getMasterSkillLevel() {

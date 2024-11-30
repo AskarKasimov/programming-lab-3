@@ -1,7 +1,7 @@
 package Creature;
 
 import Elder.Elder;
-import Exceptions.CreatureExceptions.CantChangeOwnerException;
+import Exceptions.CreatureExceptions.CreatureCantChangeOwnerException;
 import Exceptions.ElderExceptions.ElderCantCreateCreaturesException;
 import Exceptions.ElderExceptions.EldersSkillLevelNotEnoughException;
 import Exceptions.CreatureExceptions.RejectingToWorkException;
@@ -25,7 +25,7 @@ public abstract class Creature {
         this.owner = elder;
         try {
             elder.slaveCreature(this);
-        } catch (CantChangeOwnerException _) {
+        } catch (CreatureCantChangeOwnerException _) {
         }
         this.name = name;
         this.requiredMasterSkill = requiredMasterSkill;
@@ -40,21 +40,26 @@ public abstract class Creature {
         this.size = size;
     }
 
-    public void setOwner(Elder owner) throws CantChangeOwnerException {
-        if (this.owner != null && owner.getMasterSkillLevel().ordinal() < this.owner.getMasterSkillLevel().ordinal())
-            throw new CantChangeOwnerException("Current owner has more skill than new one, it can't be changed!");
-        else this.owner = owner;
+    public void setOwner(Elder newOwner) throws CreatureCantChangeOwnerException {
+        if (this.owner != newOwner) {
+            if (this.owner != null && newOwner.getMasterSkillLevel().ordinal() < this.owner.getMasterSkillLevel().ordinal())
+                throw new CreatureCantChangeOwnerException("Current owner has more skill than new one, it can't be changed!");
+            this.owner = newOwner;
+            if (!newOwner.getCreatures().contains(this)) {
+                newOwner.slaveCreature(this);
+            }
+        }
     }
 
     public void makeWork() throws RejectingToWorkException {
-        if (this.intelligence > 8.5 && Math.random() > 0.3)
+        if (this.intelligence > 4.5 && Math.random() > 0.3)
             throw new RejectingToWorkException("Creature rejects to work!");
         else {
-            System.out.println("Существо " + this.name + " работает:");
-            for (Organ organ : organs) {
-                System.out.println("\t- " + organ.doProcess());
-            }
-            System.out.println();
+            System.out.println("Существо " + this.name + " работает!");
+//            for (Organ organ : organs) {
+//                System.out.println("\t- " + organ.doProcess());
+//            }
+//            System.out.println();
         }
     }
 

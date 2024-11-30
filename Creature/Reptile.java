@@ -22,7 +22,7 @@ public class Reptile extends Creature implements PairReproduction<Reptile> {
     }
 
     @Override
-    public Reptile makeChildWithPartner(Reptile partner) throws ReproductionWithItselfException {
+    public Reptile makeChildWithPartner(Reptile partner) {
         if (this == partner)
             throw new ReproductionWithItselfException("Reptile can't reproduce with itself");
         return new Reptile(this.name + partner.name, this.requiredMasterSkill, (this.intelligence + partner.intelligence) / 2, (this.size + partner.size) / 2);

@@ -4,5 +4,5 @@ import Creature.Creature;
 import Exceptions.CreatureExceptions.ReproductionExceptions.ReproductionWithItselfException;
 
 public interface PairReproduction<T extends Creature> {
-    T makeChildWithPartner(T partner) throws ReproductionWithItselfException;
+    T makeChildWithPartner(T partner);
 }
