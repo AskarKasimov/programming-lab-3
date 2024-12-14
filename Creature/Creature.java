@@ -25,7 +25,7 @@ public abstract class Creature {
         this.owner = elder;
         try {
             elder.slaveCreature(this);
-        } catch (CreatureCantChangeOwnerException _) {
+        } catch (CreatureCantChangeOwnerException e) {
         }
         this.name = name;
         this.requiredMasterSkill = requiredMasterSkill;
