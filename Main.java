@@ -37,14 +37,14 @@ public class Main {
         Shogoth shogoth1 = null;
         try {
             shogoth1 = new Shogoth(master, "Шогот1", MasterSkillEnum.MASTER, 2.5f, 1.5f);
-        } catch (EldersSkillLevelNotEnoughException _) {
-        } catch (ElderCantCreateCreaturesException _) {
+        } catch (EldersSkillLevelNotEnoughException e) {
+        } catch (ElderCantCreateCreaturesException e) {
         }
         Shogoth shogoth2 = null;
         try {
             shogoth2 = new Shogoth(novice, "Шогот2", MasterSkillEnum.NOVICE, 0.5f, 0.5f);
-        } catch (EldersSkillLevelNotEnoughException _) {
-        } catch (ElderCantCreateCreaturesException _) {
+        } catch (EldersSkillLevelNotEnoughException e) {
+        } catch (ElderCantCreateCreaturesException e) {
         }
 
 
@@ -69,7 +69,7 @@ public class Main {
         Shogoth shogoth3 = null;
         try {
             shogoth2 = new Shogoth(novice, "Шогот3", MasterSkillEnum.MASTER, 3.5f, 3.5f);
-        } catch (EldersSkillLevelNotEnoughException _) {
+        } catch (EldersSkillLevelNotEnoughException e) {
         } catch (ElderCantCreateCreaturesException e) {
             System.out.print("Второй причиной миграции стали трудности по выращиванию ");
         }
@@ -78,7 +78,7 @@ public class Main {
             try {
                 shogoth1.makeWork();
                 shogoth2.makeWork();
-            } catch (RejectingToWorkException _) {
+            } catch (RejectingToWorkException e) {
                 System.out.print("и удерживанию в повиновении шогготов, ");
                 break;
             }
@@ -100,8 +100,8 @@ public class Main {
         try {
             System.out.print("На суше у Старцев не было никаких проблем с громадными, но исключительно послушными рептилиями, ");
             reptile = new Reptile(master, "Рептилия", MasterSkillEnum.MASTER, 3.5f, 3.5f);
-        } catch (EldersSkillLevelNotEnoughException _) {
-        } catch (ElderCantCreateCreaturesException _) {
+        } catch (EldersSkillLevelNotEnoughException e) {
+        } catch (ElderCantCreateCreaturesException e) {
         }
 
         System.out.print("а вот размножавшиеся делением шогготы, ");
