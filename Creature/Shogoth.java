@@ -75,7 +75,7 @@ public class Shogoth extends Creature implements DivisionReproduction<Shogoth> {
 
         public Shogoth build() {
             try {
-                Constructor<?> constructor;
+                Constructor<Shogoth> constructor;
                 if (elder != null) {
                     constructor = Shogoth.class.getDeclaredConstructor(Elder.class, String.class, MasterSkillEnum.class, float.class, float.class);
                     return (Shogoth) constructor.newInstance(elder, name, requiredMasterSkill, intelligence, size);

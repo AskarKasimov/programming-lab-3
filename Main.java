@@ -16,6 +16,13 @@ public class Main {
                 .setIntelligence(3.5f)
                 .setSize(3.5f)
                 .build();
+
+
+
+
+
+
+        
         // сначала жили на суше, создав первых шоготов
         System.out.print("В древние времена старцы жили на суше, где создали первых шогготов. ");
         Continent continent = new Continent("Европа");
