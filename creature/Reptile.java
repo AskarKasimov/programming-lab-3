@@ -1,11 +1,11 @@
-package Creature;
+package creature;
 
-import Creature.Reproduction.PairReproduction;
-import Elder.Elder;
-import Exceptions.ElderExceptions.ElderCantCreateCreaturesException;
-import Exceptions.ElderExceptions.EldersSkillLevelNotEnoughException;
-import Exceptions.CreatureExceptions.ReproductionExceptions.ReproductionWithItselfException;
-import enums.MasterSkillEnum;
+import creature.reproduction.PairReproduction;
+import elder.Elder;
+import customexception.creature.reproduction.ReproductionWithItselfException;
+import customexception.elder.ElderCantCreateCreaturesException;
+import customexception.elder.EldersSkillLevelNotEnoughException;
+import skillenum.MasterSkillEnum;
 
 public class Reptile extends Creature implements PairReproduction<Reptile> {
 

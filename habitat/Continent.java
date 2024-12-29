@@ -1,6 +1,6 @@
-package Habitat;
+package habitat;
 
-import Elder.Elder;
+import elder.Elder;
 
 import java.util.ArrayList;
 import java.util.List;

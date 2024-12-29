@@ -1,13 +1,14 @@
-package Elder;
+package elder;
 
-import Creature.Creature;
-import Exceptions.CreatureExceptions.CreatureCantChangeOwnerException;
-import Exceptions.HabitatExceptions.HabitatException;
-import Exceptions.HabitatExceptions.NoShogothsForOceanException;
-import Habitat.Habitat;
-import enums.MasterSkillEnum;
+import creature.Creature;
+import customexception.creature.CreatureCantChangeOwnerException;
+import customexception.habitat.HabitatException;
+import customexception.habitat.NoShogothsForOceanException;
+import habitat.Habitat;
+import skillenum.MasterSkillEnum;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Elder {
     private final String name;
@@ -28,6 +29,19 @@ public class Elder {
         }
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Elder elder = (Elder) o;
+        return canCreateCreatures == elder.canCreateCreatures && Objects.equals(name, elder.name) && Objects.equals(creatures, elder.creatures) && masterSkillLevel == elder.masterSkillLevel && Objects.equals(habitat, elder.habitat);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, creatures, masterSkillLevel, habitat, canCreateCreatures);
+    }
+
     public void slaveCreature(Creature creature) throws CreatureCantChangeOwnerException {
         if (!creatures.contains(creature)) {
             creatures.add(creature);
@@ -37,10 +51,6 @@ public class Elder {
 
     public void improveMasterSkillLevel() {
         this.masterSkillLevel = this.masterSkillLevel.nextLevel();
-    }
-
-    public void setCanCreateCreatures(boolean canCreateCreatures) {
-        this.canCreateCreatures = canCreateCreatures;
     }
 
     public void moveTo(Habitat habitat) {
@@ -85,5 +95,9 @@ public class Elder {
 
     public boolean isCanCreateCreatures() {
         return canCreateCreatures;
+    }
+
+    public void setCanCreateCreatures(boolean canCreateCreatures) {
+        this.canCreateCreatures = canCreateCreatures;
     }
 }

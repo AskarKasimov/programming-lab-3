@@ -1,10 +1,11 @@
-package Habitat;
+package habitat;
 
-import Elder.Elder;
+import elder.Elder;
 
 public interface Habitat {
     String getName();
 
     void castCataclysm();
+
     boolean canMigrateElder(Elder elder);
 }

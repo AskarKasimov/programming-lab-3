@@ -1,6 +1,4 @@
-package Exceptions.CreatureExceptions.ReproductionExceptions;
-
-import Exceptions.CreatureExceptions.CreatureException;
+package customexception.creature.reproduction;
 
 public class ReproductionException extends RuntimeException {
     public ReproductionException(String message) {

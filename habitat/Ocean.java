@@ -1,8 +1,8 @@
-package Habitat;
+package habitat;
 
-import Creature.Creature;
-import Creature.Shogoth;
-import Elder.Elder;
+import creature.Creature;
+import creature.Shogoth;
+import elder.Elder;
 
 import java.util.ArrayList;
 import java.util.List;

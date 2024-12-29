@@ -1,4 +1,4 @@
-package Creature;
+package creature;
 
 public record Organ(String name, String process) {
     public String doProcess() {

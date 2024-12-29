@@ -1,11 +1,11 @@
-package Creature;
+package creature;
 
-import Creature.Reproduction.DivisionReproduction;
-import Elder.Elder;
-import Exceptions.ElderExceptions.ElderCantCreateCreaturesException;
-import Exceptions.ElderExceptions.EldersSkillLevelNotEnoughException;
-import Exceptions.CreatureExceptions.RejectingToWorkException;
-import enums.MasterSkillEnum;
+import creature.reproduction.DivisionReproduction;
+import elder.Elder;
+import customexception.creature.RejectingToWorkException;
+import customexception.elder.ElderCantCreateCreaturesException;
+import customexception.elder.EldersSkillLevelNotEnoughException;
+import skillenum.MasterSkillEnum;
 
 import java.lang.reflect.Constructor;
 
@@ -78,10 +78,10 @@ public class Shogoth extends Creature implements DivisionReproduction<Shogoth> {
                 Constructor<Shogoth> constructor;
                 if (elder != null) {
                     constructor = Shogoth.class.getDeclaredConstructor(Elder.class, String.class, MasterSkillEnum.class, float.class, float.class);
-                    return (Shogoth) constructor.newInstance(elder, name, requiredMasterSkill, intelligence, size);
+                    return constructor.newInstance(elder, name, requiredMasterSkill, intelligence, size);
                 } else {
                     constructor = Shogoth.class.getDeclaredConstructor(String.class, MasterSkillEnum.class, float.class, float.class);
-                    return (Shogoth) constructor.newInstance(name, requiredMasterSkill, intelligence, size);
+                    return constructor.newInstance(name, requiredMasterSkill, intelligence, size);
                 }
             } catch (Exception e) {
                 throw new RuntimeException("Failed to build Shogoth instance", e);

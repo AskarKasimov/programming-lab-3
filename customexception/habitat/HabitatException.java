@@ -1,4 +1,4 @@
-package Exceptions.HabitatExceptions;
+package customexception.habitat;
 
 public class HabitatException extends RuntimeException {
     public HabitatException(String message) {

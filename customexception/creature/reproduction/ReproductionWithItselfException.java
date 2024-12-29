@@ -1,4 +1,4 @@
-package Exceptions.CreatureExceptions.ReproductionExceptions;
+package customexception.creature.reproduction;
 
 public class ReproductionWithItselfException extends ReproductionException {
     public ReproductionWithItselfException(String message) {
